@@ -97,44 +97,49 @@ class _PlayersListState extends State<PlayersList> {
           ),
         ],
       ),
-      bottomSheet: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextButton(
-            onPressed: () {
-              setState(() {
-                players.clear();
-              });
-            },
-            style: ButtonStyle(
-              side: MaterialStateProperty.all(
-                const BorderSide(
-                  color: Color.fromARGB(255, 34, 6, 53),
-                ),
+      bottomSheet: players.isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        players.clear();
+                      });
+                    },
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        const BorderSide(
+                          color: Color.fromARGB(255, 34, 6, 53),
+                        ),
+                      ),
+                    ),
+                    child: const Text('Clear All Players'),
+                  ),
+                  const SizedBox(width: 20),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        for (var player in players) {
+                          player.scores.clear();
+                        }
+                      });
+                    },
+                    style: ButtonStyle(
+                      side: MaterialStateProperty.all(
+                        const BorderSide(
+                          color: Color.fromARGB(255, 34, 6, 53),
+                        ),
+                      ),
+                    ),
+                    child: const Text('Reset Scores'),
+                  ),
+                ],
               ),
-            ),
-            child: const Text('Clear All Players'),
-          ),
-          const SizedBox(width: 20),
-          TextButton(
-            onPressed: () {
-              setState(() {
-                for (var player in players) {
-                  player.scores.clear();
-                }
-              });
-            },
-            style: ButtonStyle(
-              side: MaterialStateProperty.all(
-                const BorderSide(
-                  color: Color.fromARGB(255, 34, 6, 53),
-                ),
-              ),
-            ),
-            child: const Text('Reset Scores'),
-          ),
-        ],
-      ),
+            )
+          : null,
     );
   }
 }
