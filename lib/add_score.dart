@@ -14,7 +14,7 @@ class _AddScoreState extends State<AddScore> {
 
   void _submitData() {
     final enteredScore = int.parse(_scoreController.text);
-    if (enteredScore <= 0) {
+    if (enteredScore < 0) {
       return;
     }
 
