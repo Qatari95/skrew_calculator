@@ -31,6 +31,7 @@ class _PlayerDataState extends State<PlayerData> {
 
   @override
   Widget build(BuildContext context) {
+    var index = 0;
     return Card(
       margin: const EdgeInsets.all(10),
       child: ListTile(
@@ -47,8 +48,9 @@ class _PlayerDataState extends State<PlayerData> {
                 children: [
                   Column(
                     children: widget.player.scores
-                        .map((round) => Text(
-                            'Round ${widget.player.scores.indexOf(round) + 1} Score - $round'))
+                        .map(
+                          (round) => Text('Round ${++index} Score - $round'),
+                        )
                         .toList(),
                   ),
                   const SizedBox(height: 10),

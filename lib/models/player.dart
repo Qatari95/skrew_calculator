@@ -1,6 +1,6 @@
 class Player {
   final String name;
-  final scores = [];
+  final scores = List<int>.empty(growable: true);
   get totalScore {
     if (scores.isEmpty) {
       return 0;
