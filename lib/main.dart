@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:skrew_calculator/calculator.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skrew_calculator/screens/calculator.dart';
 
 void main() {
-  runApp(const Calculator());
+  runApp(ProviderScope(
+    child: Calculator(),
+  ));
 }

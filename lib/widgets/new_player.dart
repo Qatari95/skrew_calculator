@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skrew_calculator/providers/player_provider.dart';
 
-class NewPlayer extends StatefulWidget {
-  final void Function(String) addPlayer;
-  const NewPlayer(this.addPlayer, {super.key});
+class NewPlayer extends ConsumerStatefulWidget {
+  const NewPlayer({super.key});
 
   @override
-  State<NewPlayer> createState() {
+  ConsumerState<NewPlayer> createState() {
     return _NewPlayerState();
   }
 }
 
-class _NewPlayerState extends State<NewPlayer> {
+class _NewPlayerState extends ConsumerState<NewPlayer> {
   final _controller = TextEditingController();
   _submitData() {
     final enteredName = _controller.text;
     if (enteredName.isEmpty) {
       return;
     }
-    widget.addPlayer(enteredName);
+    ref.read(playerProvider.notifier).addPlayer(enteredName);
     Navigator.of(context).pop();
   }
 

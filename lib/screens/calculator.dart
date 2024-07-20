@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skrew_calculator/players_list.dart';
+import 'package:skrew_calculator/screens/players_list.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
